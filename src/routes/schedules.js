@@ -3,8 +3,8 @@ const router = express.Router();
 const supabase = require('../supabaseClient');
 const authMiddleware = require('../middleware/auth');
 
-// POST /api/schedule or /api/schedules/schedule – create a scheduled post
-router.post('/schedule', authMiddleware, async (req, res, next) => {
+// POST /api/schedule (mounted at /api/schedule → path /) or /api/schedules
+router.post(['/schedule', '/'], authMiddleware, async (req, res, next) => {
   try {
     const { data, error } = await supabase
       .from('schedules')

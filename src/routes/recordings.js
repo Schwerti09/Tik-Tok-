@@ -6,8 +6,8 @@ const authMiddleware = require('../middleware/auth');
 
 const upload = multer({ storage: multer.memoryStorage() });
 
-// POST /api/upload or /api/recordings/upload – upload a file and store metadata
-router.post('/upload', authMiddleware, upload.single('file'), async (req, res, next) => {
+// POST /api/upload (mounted at /api/upload → path /) or /api/recordings/upload
+router.post(['/upload', '/'], authMiddleware, upload.single('file'), async (req, res, next) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No file provided' });
