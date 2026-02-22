@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-brand-50 via-white to-accent-50 min-h-screen font-sans antialiased text-gray-800;
+  }
+}
+
+@layer components {
+  /* Glass card – light feminine look */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-sm border border-brand-100 rounded-2xl shadow-glass;
+  }
+
+  /* Gradient text – purple → pink */
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-600 to-accent-500 bg-clip-text text-transparent;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand-600 to-accent-500
+           hover:from-brand-500 hover:to-accent-400
+           text-white font-semibold py-2 px-4 rounded-xl
+           transition-all duration-200 shadow-lg hover:shadow-pink
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply bg-white border border-brand-200 text-brand-700
+           hover:bg-brand-50 font-medium py-2 px-4 rounded-xl
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-1;
+  }
+
+  /* Form input */
+  .input-field {
+    @apply bg-white border border-brand-200 rounded-xl px-4 py-2.5
+           text-gray-700 placeholder-gray-400
+           focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200
+           transition-all duration-200 w-full;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-200 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-400;
+}
