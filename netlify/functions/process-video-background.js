@@ -46,10 +46,10 @@ function splitVideoIntoClips(inputPath, outputDir, segmentLength) {
 
     ffmpeg(inputPath)
       .outputOptions([
-        '-c copy',
+        '-c', 'copy',
         `-segment_time ${segmentLength}`,
-        '-f segment',
-        '-reset_timestamps 1',
+        '-f', 'segment',
+        '-reset_timestamps', '1',
       ])
       .output(outputPattern)
       .on('end', () => {

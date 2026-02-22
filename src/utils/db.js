@@ -87,7 +87,7 @@ async function markJobDone(jobId, clipUrls) {
      SET status = 'done', clip_urls = $2, updated_at = NOW()
      WHERE id = $1
      RETURNING *`,
-    [jobId, JSON.stringify(clipUrls)]
+    [jobId, clipUrls]
   );
   return result.rows[0];
 }

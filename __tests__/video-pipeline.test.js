@@ -95,7 +95,7 @@ describe('src/utils/db', () => {
     const [sql, params] = mockQuery.mock.calls[0];
     expect(sql).toMatch(/status = 'done'/);
     expect(params[0]).toBe('job-4');
-    expect(JSON.parse(params[1])).toEqual(clipUrls);
+    expect(params[1]).toEqual(clipUrls);
     expect(result).toEqual(fakeRow);
   });
 

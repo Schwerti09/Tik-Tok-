@@ -95,10 +95,16 @@ exports.handler = async (event) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ jobId, s3Key }),
-    }).catch((err) => {
-      // Log but do not fail the upload response – the job is already in the DB.
-      console.error('Failed to trigger background function:', err.message);
-    });
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.error(`Background function responded with HTTP ${res.status} for job ${jobId}`);
+        }
+      })
+      .catch((err) => {
+        // Log but do not fail the upload response – the job is already in the DB.
+        console.error('Failed to trigger background function:', err.message);
+      });
 
     // 5. Return jobId to client immediately
     return {
