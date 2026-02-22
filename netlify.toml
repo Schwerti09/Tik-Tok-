@@ -1,0 +1,15 @@
+[build]
+  functions = "netlify/functions"
+
+[dev]
+  port = 8888
+
+[[redirects]]
+  from = "/api/videos/upload"
+  to = "/.netlify/functions/upload-video"
+  status = 200
+
+[[redirects]]
+  from = "/api/videos/status/:jobId"
+  to = "/.netlify/functions/video-status"
+  status = 200
