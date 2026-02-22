@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build artifacts
+frontend/build/
+
+# Environment
+.env
+.env.local
+
+# Cache
+.cache/
+frontend/.cache/
