@@ -28,6 +28,13 @@ const sales = [
   { product: 'Affiliate Links', sales: 156, revenue: '780€', trend: '+5%' },
 ]
 
+const colorClasses = {
+  pink: { bg: 'bg-pink-600/20', text: 'text-pink-400' },
+  violet: { bg: 'bg-violet-600/20', text: 'text-violet-400' },
+  red: { bg: 'bg-red-600/20', text: 'text-red-400' },
+  green: { bg: 'bg-green-600/20', text: 'text-green-400' },
+}
+
 const stats = [
   { icon: TrendingUp, label: 'Gesamte Views', value: '182.6K', change: '+18%', color: 'pink' },
   { icon: Users, label: 'Follower', value: '6.8K', change: '+34%', color: 'violet' },
@@ -48,8 +55,8 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {stats.map(({ icon: Icon, label, value, change, color }) => (
           <div key={label} className="bg-gray-900 rounded-2xl border border-gray-800 p-6">
-            <div className={`w-10 h-10 rounded-xl bg-${color}-600/20 flex items-center justify-center mb-4`}>
-              <Icon size={20} className={`text-${color}-400`} />
+            <div className={`w-10 h-10 rounded-xl ${colorClasses[color].bg} flex items-center justify-center mb-4`}>
+              <Icon size={20} className={colorClasses[color].text} />
             </div>
             <div className="text-2xl font-bold mb-1">{value}</div>
             <div className="text-gray-400 text-sm mb-2">{label}</div>
