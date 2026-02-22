@@ -1,5 +1,0 @@
-Metadata-Version: 2.4
-Name: clipgenie
-Version: 0.1.0
-Summary: TikTok-style short-clip generator with plan-based feature gating
-Requires-Python: >=3.9
