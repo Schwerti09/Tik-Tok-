@@ -1,0 +1,16 @@
+{
+  "name": "tik-tok-app",
+  "version": "1.0.0",
+  "description": "TikTok-style app with Supabase Auth",
+  "scripts": {
+    "build": "tsc --project tsconfig.functions.json"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^2.8.2",
+    "@types/node": "^22.13.5",
+    "typescript": "^5.8.2"
+  }
+}
