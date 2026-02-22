@@ -1,0 +1,23 @@
+[build]
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Idea Generator – POST /api/ideagen/generate
+[[redirects]]
+  from = "/api/ideagen/generate"
+  to   = "/.netlify/functions/ideagen-generate"
+  status = 200
+
+# Transcription – POST /api/transcribe
+[[redirects]]
+  from = "/api/transcribe"
+  to   = "/.netlify/functions/transcribe"
+  status = 200
+
+# Virality Score – POST /api/virality/score
+[[redirects]]
+  from = "/api/virality/score"
+  to   = "/.netlify/functions/virality-score"
+  status = 200
