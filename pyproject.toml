@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clipgenie"
+version = "0.1.0"
+description = "TikTok-style short-clip generator with plan-based feature gating"
+requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
