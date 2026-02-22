@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #0a0a0a;
+    --color-surface: #111111;
+    --color-border: #1f1f1f;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-600;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  .card {
+    @apply bg-neutral-900 border border-neutral-800 rounded-2xl;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-pink-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:rounded-2xl before:p-px before:bg-gradient-to-r before:from-pink-500 before:to-cyan-400;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-neutral-400 hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer;
+  }
+
+  .nav-item.active {
+    @apply text-white bg-gradient-to-r from-pink-500/20 to-cyan-400/10 border border-pink-500/20;
+  }
+}
