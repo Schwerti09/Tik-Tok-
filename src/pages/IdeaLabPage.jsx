@@ -31,13 +31,13 @@ export default function IdeaLabPage() {
     setTimeout(() => {
       setIdeas([
         {
-          id: Date.now(),
+          id: crypto.randomUUID(),
           title: `${topic}: Der ultimative Guide für 2025`,
           hook: `"Niemand redet darüber, aber ${topic} verändert gerade alles:"`,
           outline: ['Überraschender Einstieg mit Statistik', 'Problem-Agitation: Warum das wichtig ist', 'Deine Lösung in 3 Schritten', 'Social Proof / Ergebnis', 'CTA: Folge für mehr'],
         },
         {
-          id: Date.now() + 1,
+          id: crypto.randomUUID(),
           title: `Ich habe ${topic} 30 Tage ausprobiert – das Ergebnis`,
           hook: `"30 Tage ${topic} – war es das wert? Meine ehrliche Meinung:"`,
           outline: ['Ausgangssituation', 'Die Regeln meines Experiments', 'Woche 1-2: Erste Erkenntnisse', 'Woche 3-4: Das Überraschende', 'Fazit und Empfehlung'],
