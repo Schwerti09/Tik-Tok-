@@ -11,6 +11,7 @@ const schedulesRouter = require('./routes/schedules');
 const analyticsRouter = require('./routes/analytics');
 const communityRouter = require('./routes/community');
 const { postsRouter, mentorsRouter } = require('./routes/community');
+const stripeRouter = require('./routes/stripe');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use('/api/analytics', analyticsRouter);
 app.use('/api/community', communityRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/mentors', mentorsRouter);
+app.use('/api/stripe', stripeRouter);
 
 // Global error handler
 // eslint-disable-next-line no-unused-vars
