@@ -19,7 +19,7 @@ export default function SchedulePage() {
         const data = await res.json();
         setSchedules(Array.isArray(data) ? data : data.schedules || []);
       }
-    } catch {} finally { setLoading(false); }
+    } catch (e) { console.error('Failed to load schedules:', e); } finally { setLoading(false); }
   }
 
   async function createSchedule(e) {

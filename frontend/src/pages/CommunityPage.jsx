@@ -26,7 +26,7 @@ export default function CommunityPage() {
         const d = await mentorsRes.json();
         setMentors(Array.isArray(d) ? d : d.mentors || []);
       }
-    } catch {} finally { setLoading(false); }
+    } catch (e) { console.error('Failed to load community data:', e); } finally { setLoading(false); }
   }
 
   async function submitPost(e) {

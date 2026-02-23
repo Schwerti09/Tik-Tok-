@@ -37,8 +37,8 @@ export default function IdeasPage() {
       await apiFetch('/api/ideas/save', { method: 'POST', body: JSON.stringify({ idea }) }, token);
       setSaveMsg('Idea saved!');
       setTimeout(() => setSaveMsg(''), 2000);
-    } catch {
-      setSaveMsg('Failed to save');
+    } catch (err) {
+      setSaveMsg(`Failed to save: ${err.message}`);
     }
   }
 
@@ -49,7 +49,7 @@ export default function IdeasPage() {
         const data = await res.json();
         setSavedIdeas(Array.isArray(data) ? data : data.ideas || []);
       }
-    } catch {}
+    } catch (e) { console.error('Failed to load saved ideas:', e); }
   }
 
   useEffect(() => { loadSaved(); }, []); // eslint-disable-line react-hooks/exhaustive-deps

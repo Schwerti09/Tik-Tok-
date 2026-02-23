@@ -6,7 +6,7 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem('auth_token'));
   const [user, setUser] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('auth_user')); } catch { return null; }
+    try { return JSON.parse(localStorage.getItem('auth_user')); } catch (e) { console.error('Failed to parse stored user:', e); return null; }
   });
 
   async function login(email, password) {
@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
 
   async function logout() {
     if (token) {
-      try { await apiFetch('/auth/logout', { method: 'POST' }, token); } catch {}
+      try { await apiFetch('/auth/logout', { method: 'POST' }, token); } catch (e) { console.error('Logout API call failed:', e); }
     }
     localStorage.removeItem('auth_token');
     localStorage.removeItem('auth_user');

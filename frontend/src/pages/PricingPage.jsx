@@ -51,7 +51,7 @@ export default function PricingPage() {
     setLoading('portal');
     try {
       const res = await apiFetch('/api/stripe/create-portal-session', { method: 'POST' }, token);
-      if (!res.ok) throw new Error('Failed');
+      if (!res.ok) throw new Error('Failed to open billing portal');
       const data = await res.json();
       if (data.url) window.location.href = data.url;
     } catch (err) {

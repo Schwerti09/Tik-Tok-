@@ -20,7 +20,7 @@ export default function VideosPage() {
         const data = await res.json();
         setVideos(Array.isArray(data) ? data : data.videos || []);
       }
-    } catch {} finally { setLoading(false); }
+    } catch (e) { console.error('Failed to load videos:', e); } finally { setLoading(false); }
   }
 
   async function processVideo(e) {
