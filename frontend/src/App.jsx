@@ -1,35 +1,94 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import { useAuth } from './context/useAuth'
+import Layout from './components/Layout'
+import LandingPage from './pages/LandingPage'
+import LoginPage from './pages/LoginPage'
+import SignupPage from './pages/SignupPage'
+import DashboardPage from './pages/DashboardPage'
+import TrendsPage from './pages/TrendsPage'
+import IdeasPage from './pages/IdeasPage'
+import RecordingsPage from './pages/RecordingsPage'
+import AnalyticsPage from './pages/AnalyticsPage'
+import CommunityPage from './pages/CommunityPage'
+import PricingPage from './pages/PricingPage'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+function PrivateRoute({ children }) {
+  const { user, loading } = useAuth()
+  if (loading) return <div className="loading-screen">Loading…</div>
+  return user ? children : <Navigate to="/login" replace />
+}
 
+function AppRoutes() {
+  const { user, loading } = useAuth()
+  if (loading) return <div className="loading-screen">Loading…</div>
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <LandingPage />} />
+      <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
+      <Route path="/signup" element={user ? <Navigate to="/dashboard" replace /> : <SignupPage />} />
+      <Route path="/pricing" element={<PricingPage />} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Layout><DashboardPage /></Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/trends"
+        element={
+          <PrivateRoute>
+            <Layout><TrendsPage /></Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/ideas"
+        element={
+          <PrivateRoute>
+            <Layout><IdeasPage /></Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/recordings"
+        element={
+          <PrivateRoute>
+            <Layout><RecordingsPage /></Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/analytics"
+        element={
+          <PrivateRoute>
+            <Layout><AnalyticsPage /></Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/community"
+        element={
+          <PrivateRoute>
+            <Layout><CommunityPage /></Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </BrowserRouter>
+  )
+}
+
