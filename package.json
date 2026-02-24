@@ -1,10 +1,17 @@
 {
-  "name": "tiktok-creator-api",
+  "name": "tikflow",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "netlify/functions",
+    "worker"
+  ],
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "start:worker": "npm run start --workspace=worker",
+    "start:api": "node src/index.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
