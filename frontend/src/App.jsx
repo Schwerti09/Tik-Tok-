@@ -11,6 +11,7 @@ import IdeasPage from './pages/IdeasPage'
 import RecordingsPage from './pages/RecordingsPage'
 import AnalyticsPage from './pages/AnalyticsPage'
 import CommunityPage from './pages/CommunityPage'
+import SchedulerPage from './pages/SchedulerPage'
 import PricingPage from './pages/PricingPage'
 import './App.css'
 
@@ -66,6 +67,14 @@ function AppRoutes() {
         element={
           <PrivateRoute>
             <Layout><AnalyticsPage /></Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/schedule"
+        element={
+          <PrivateRoute>
+            <Layout><SchedulerPage /></Layout>
           </PrivateRoute>
         }
       />
