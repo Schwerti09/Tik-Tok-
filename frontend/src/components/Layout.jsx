@@ -6,6 +6,7 @@ const navItems = [
   { to: '/trends', label: '📈 Trends' },
   { to: '/ideas', label: '💡 Ideas' },
   { to: '/recordings', label: '🎬 Recordings' },
+  { to: '/schedule', label: '📅 Schedule' },
   { to: '/analytics', label: '📊 Analytics' },
   { to: '/community', label: '👥 Community' },
   { to: '/pricing', label: '💳 Pricing' },
