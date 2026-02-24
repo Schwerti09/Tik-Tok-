@@ -1,12 +1,18 @@
-:root {
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  body {
+    @apply bg-gray-950 text-gray-100;
+  }
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
+@layer components {
+  .loading-screen {
+    @apply flex items-center justify-center h-screen text-gray-400;
+  }
 }
-
